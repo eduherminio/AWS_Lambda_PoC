@@ -6,7 +6,7 @@ A role with `AWSLambdaBasicExecutionRole` policy (named `lambdaRole` in this exa
 
 ## Instructions
 
-Install Amazon.Lambda.Tools Global Tools if not already installed, or just update otherwise
+Install or update Amazon.Lambda.Tools
 
 ```bash
     dotnet tool install -g Amazon.Lambda.Tools
