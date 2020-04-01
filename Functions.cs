@@ -3,6 +3,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
 
+[assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.Json.JsonSerializer))]
+
 namespace TestLambda
 {
     public static class Functions
@@ -14,13 +16,13 @@ namespace TestLambda
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<string> EchoPlusBookRecommendation(string input, ILambdaContext context)
+        public static async Task<string> ToUpperPlusBookRecommendation(string input, ILambdaContext context)
         {
             var sb = new StringBuilder(input?.ToUpperInvariant());
             sb.Append("   ");
 
             var client = new HttpClient();
-            var result = await client.GetAsync("https://openlibrary.org/api/books?bibkeys=OLID:OL629052W");
+            var result = await client.GetAsync("https://openlibrary.org/api/books?bibkeys=OLID:OL5917940M");
             sb.Append(await result.Content.ReadAsStringAsync());
 
             return sb.ToString();
