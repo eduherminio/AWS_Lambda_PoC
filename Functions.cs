@@ -1,27 +1,12 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Amazon.Lambda.Core;
-using Amazon.Lambda.RuntimeSupport;
-using Amazon.Lambda.Serialization.Json;
 
 namespace TestLambda
 {
-    public class Functions
+    public static class Functions
     {
-        /// <summary>
-        /// The main entry point for the custom runtime.
-        /// </summary>
-        /// <param name="args"></param>
-        public static async Task Main(string[] args)
-        {
-            Func<string, ILambdaContext, Task<string>> func = FunctionHandler;
-            using var handlerWrapper = HandlerWrapper.GetHandlerWrapper(func, new JsonSerializer());
-            using var bootstrap = new LambdaBootstrap(handlerWrapper);
-            await bootstrap.RunAsync();
-        }
-
         /// <summary>
         /// A simple function that takes a string, does a ToUpper of the input
         /// and appends some random info from https://openlibrary.org
@@ -29,7 +14,7 @@ namespace TestLambda
         /// <param name="input"></param>
         /// <param name="context"></param>
         /// <returns></returns>
-        public static async Task<string> FunctionHandler(string input, ILambdaContext context)
+        public static async Task<string> EchoPlusBookRecommendation(string input, ILambdaContext context)
         {
             var sb = new StringBuilder(input?.ToUpperInvariant());
             sb.Append("   ");

@@ -13,16 +13,10 @@ Install or update Amazon.Lambda.Tools
     dotnet tool update -g Amazon.Lambda.Tools
 ```
 
-Create the package to be deployed (run command in Linux or WSL, or remove `/p:PublishReadyToRun=true` from `aws-lambda-tools-defaults.json`)
-
-```bash
-    dotnet lambda package --output-package bin/TestLambdaPackage.zip
-```
-
 Deploy the lambda function
 
 ```bash
-    dotnet lambda deploy-function --package bin/TestLambdaPackage.zip
+    dotnet lambda deploy-function
 ```
 
 Test the lambda function
